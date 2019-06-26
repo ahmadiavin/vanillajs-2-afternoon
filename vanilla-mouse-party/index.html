@@ -67,7 +67,7 @@
 
 let drawID; 
 
-const getRandomNumber = function(min, max) {
+function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min + 1)) + min;
   };
 
@@ -110,17 +110,18 @@ container.appendChild(ball);
 
 }, 100);
 
+
+}
 window.addEventListener('mouseover', function(){
     drawID = draw();
 
 });
 
-window.addEventListener('mouseover', function(){
-    clearInterval = draw();
+window.addEventListener('mouseout', function(){
+    clearInterval(drawID);
 
-})
+});
 
-  }
 
 
 
