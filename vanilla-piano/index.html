@@ -165,16 +165,25 @@
 </body>
 
 <script>
-    window.addEventListener('keypress', function(keypressHandler){
-        let toneVar = document.querySelector($("audio[data-key]"));
-        if (toneVar = !true){
-            return toneVar;
-        }
-    
-        let pianoKeyPress = document.querySelector($("polygon[class][name$=pianoKey]"));
-    })
 
-    toneVar(keypressHandler)
+
+    window.addEventListener("keypress", function(keypressHandler){
+        let toneVar = document.querySelector(`audio[data-key="${keypressHandler.keyCode}"]`);
+        if (!toneVar)
+            return;
+        
+    
+        let pianoKeyPress = document.querySelector(`.pianoKey[data-key="${keypressHandler.keyCode}"]`);
+        toneVar.currentTime = 0;
+        pianoKeyPress.classList.add("pressed");
+        toneVar.play();
+        setTimeout(function(){
+            pianoKeyPress.classList.remove("pressed");
+
+        } , 300);
+    });
+ 
+
 </script>
 
 </html>
